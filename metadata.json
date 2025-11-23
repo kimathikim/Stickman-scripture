@@ -1,0 +1,7 @@
+{
+  "name": "Stickman Scripture",
+  "description": "A visual Bible reader that uses stickman animations to illustrate verses and includes a real-time voice companion for deep study.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
