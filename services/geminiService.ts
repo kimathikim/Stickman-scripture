@@ -1,7 +1,7 @@
 import { GoogleGenAI, Type, Modality } from "@google/genai";
 import { ScriptureResponse, QuizQuestion } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
 
 // --- Text Generation ---
 
@@ -64,14 +64,14 @@ export const generateQuiz = async (reference: string, verseText: string): Promis
           type: Type.OBJECT,
           properties: {
             question: { type: Type.STRING },
-            options: { 
-              type: Type.ARRAY, 
+            options: {
+              type: Type.ARRAY,
               items: { type: Type.STRING },
-              description: "An array of 4 possible answers" 
+              description: "An array of 4 possible answers"
             },
-            correctAnswerIndex: { 
-              type: Type.INTEGER, 
-              description: "The index (0-3) of the correct answer in the options array" 
+            correctAnswerIndex: {
+              type: Type.INTEGER,
+              description: "The index (0-3) of the correct answer in the options array"
             }
           },
           required: ["question", "options", "correctAnswerIndex"]
@@ -132,7 +132,7 @@ export const connectToLiveSession = async (
       onclose: onClose,
     },
     config: {
-      responseModalities: [Modality.AUDIO], 
+      responseModalities: [Modality.AUDIO],
       speechConfig: {
         voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } },
       },
